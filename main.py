@@ -70,6 +70,8 @@ def log_requests():
 #inicializar la ruta
 @app.route("/", methods =["POST", "GET"])
 def index():
+    print(os.getenv('TOKEN'))
+    print(os.getenv('IDWHATSAPP'))
     print('Arranque de la aplicacion')
     return jsonify({"status": "success","messege": "Conexion satisfactoriamente."}, 200)
 
@@ -175,6 +177,6 @@ def webhook_whatsapp():
     return jsonify({"status": "success"}, 200)
 
 if __name__ == "__main__":
-    #print(os.getenv('TOKEN'))
+    print(os.getenv('TOKEN'))
     print(os.getenv('IDWHATSAPP'))
     app.run(debug = True)
