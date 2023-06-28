@@ -1,6 +1,9 @@
 from flask import Flask, jsonify, request, render_template, current_app
 from unipath import Path
 from datetime import datetime
+#''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''env
+import os
+from dotenv import load_dotenv
 #''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''ApiWhatsaap
 import requests
 import json
@@ -8,6 +11,7 @@ from heyoo import WhatsApp
 #'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''chatbot
 from nltk.chat.util import Chat, reflections
 
+load_dotenv()
 app = Flask(__name__)
 
 #'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''inicializar la ruta
@@ -71,7 +75,7 @@ def index():
 
 # https://developers.facebook.com/docs/whatsapp/api/messages/text
 #def sendMessegeWhatsaap(messege):
-#    token = "EAANMM1aAZBp4BAGHGZB8v4GrTfn3s7B5YbIlj0SLWs6yZA4n1jKB6EdZA2Tg2futo7qhUjtufwLvGi9FRYovf4FwJ80S6LzYWNCiiC93nkN3rI29pzmj8XqJnQJtQ5K29cp62oh8w9Lb1hk0M7cCdGYCLXW0t53l6p0KjErivy1vyerbmfmMdBE41jObartJkjqwZAc8kTwZDZD"
+#    token = os.getenv('TOKEN')
 #    headeToken = "Bearer {0}".format(token)
 #    print(headeToken)
 #    url = "https://graph.facebook.com/v17.0/116250248175966/messages"
@@ -93,9 +97,9 @@ def index():
 # Libreria Heyoo
 def sendMessegeWhatsaapp(messege):
     #TOKEN DE ACCESO DE FACEBOOK
-    token = "EAANMM1aAZBp4BAAHBJZBNHvJnXHXQondzBMnQJ9ypUhaaIi0K3CheKEgiKHfTw8uYnPgZAviYe3JyQdIUDEmnqZA2VRGkIjohxWl8dfs2dDFhQlXWwuoRzhbWkgZCYtXNgqSjbIZCIU7ytN7VEGKiXXANVrYv5h9zkucD1t4kIIUr7cIqODwdlWeN8psTjN0qB0eVrQicqcxTAQuFH1sXbKbWo66Ra3agZD"
+    token = os.getenv('TOKEN')
     #IDENTIFICADOR DE NÚMERO DE TELÉFONO
-    idNumeroTeléfono = '116250248175966'
+    idNumeroTeléfono = os.getenv('IDWHATSAPP')
     #TELEFONO QUE RECIBE (EL DE NOSOTROS QUE DIMOS DE ALTA)
     telefonoEnvia='51997585922'
     #MENSAJE A ENVIAR
