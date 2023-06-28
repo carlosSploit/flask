@@ -1,23 +1,24 @@
 from flask import Flask, jsonify, request, render_template, current_app
 from unipath import Path
 from datetime import datetime
-#''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''env
+# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''env
 import os
 from dotenv import load_dotenv
-#''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''ApiWhatsaap
+# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''ApiWhatsaap
 import requests
 import json
 from heyoo import WhatsApp
-#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''chatbot
+# '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''chatbot
 from nltk.chat.util import Chat, reflections
 
 load_dotenv()
 app = Flask(__name__)
 
-#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''inicializar la ruta
+# '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''inicializar la ruta
 # datos para el entrenamiento del chatbot
 mis_reflexions = {}
 pares = []
+
 
 def initdatares():
 
@@ -32,21 +33,24 @@ def initdatares():
     }
 
     pares = [
-        #[
+        # [
         #    r"(.*) metodos (.*) publicar (.*)|",
         #    ["Tenemos el metodo particular o profecional", ]
-        #],
+        # ],
+        # pepito 58
         [
             r"Hola (.*)|Hola",
             ["Hola, en que podemos ayudarte.....", ]
         ]
     ]
 
+
 initdatares()
 
+
 def conversacionbot(messeg):
-    #print(mis_reflexions)
-    #print(pares)
+    # print(mis_reflexions)
+    # print(pares)
     chat = Chat(pares, mis_reflexions)
     # chat.converse()
     # Ingresar los datos para que de una respuesta el bot segun lo aprendido
@@ -62,21 +66,25 @@ def conversacionbot(messeg):
 
     return resul
 
-#''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+
 @app.before_request
 def log_requests():
     print("Debug log level")
 
-#inicializar la ruta
-@app.route("/", methods =["POST", "GET"])
+# inicializar la ruta
+
+
+@app.route("/", methods=["POST", "GET"])
 def index():
     print(os.getenv('TOKEN'))
     print(os.getenv('IDWHATSAPP'))
     print('Arranque de la aplicacion')
-    return jsonify({"status": "success","messege": "Conexion satisfactoriamente."}, 200)
+    return jsonify({"status": "success", "messege": "Conexion satisfactoriamente."}, 200)
 
 # https://developers.facebook.com/docs/whatsapp/api/messages/text
-#def sendMessegeWhatsaap(messege):
+# def sendMessegeWhatsaap(messege):
 #    token = os.getenv('TOKEN')
 #    headeToken = "Bearer {0}".format(token)
 #    print(headeToken)
@@ -97,53 +105,57 @@ def index():
 #    print("Status Code", response.status_code)
 
 # Libreria Heyoo
-def sendMessegeWhatsaapp(messege):
-    #TOKEN DE ACCESO DE FACEBOOK
-    token = os.getenv('TOKEN')
-    #IDENTIFICADOR DE NÚMERO DE TELÉFONO
-    idNumeroTeléfono = os.getenv('IDWHATSAPP')
-    #TELEFONO QUE RECIBE (EL DE NOSOTROS QUE DIMOS DE ALTA)
-    telefonoEnvia='51997585922'
-    #MENSAJE A ENVIAR
-    textoMensaje = messege
-    #'''''''''''''''''''''''''''''''''''''''''''' Enviamos el mensaje
-    #INICIALIZAMOS ENVIO DE MENSAJES
-    mensajeWa=WhatsApp(token,idNumeroTeléfono)
-    #ENVIAMOS UN MENSAJE DE TEXTO
-    mensajeWa.send_message(textoMensaje,telefonoEnvia)
 
-#cuando recibimos las peticiones en esta ruta
-@app.route("/webhook/", methods =["POST", "GET"])
+
+def sendMessegeWhatsaapp(messege):
+    # TOKEN DE ACCESO DE FACEBOOK
+    token = os.getenv('TOKEN')
+    # IDENTIFICADOR DE NÚMERO DE TELÉFONO
+    idNumeroTeléfono = os.getenv('IDWHATSAPP')
+    # TELEFONO QUE RECIBE (EL DE NOSOTROS QUE DIMOS DE ALTA)
+    telefonoEnvia = '51997585922'
+    # MENSAJE A ENVIAR
+    textoMensaje = messege
+    # '''''''''''''''''''''''''''''''''''''''''''' Enviamos el mensaje
+    # INICIALIZAMOS ENVIO DE MENSAJES
+    mensajeWa = WhatsApp(token, idNumeroTeléfono)
+    # ENVIAMOS UN MENSAJE DE TEXTO
+    mensajeWa.send_message(textoMensaje, telefonoEnvia)
+
+# cuando recibimos las peticiones en esta ruta
+
+
+@app.route("/webhook/", methods=["POST", "GET"])
 def webhook_whatsapp():
-    #Si hay datos recibimos via get
+    # Si hay datos recibimos via get
     if request.method == "GET":
-        #Si el toke es igual al que recibimos
-        #hub.verify_token
-        #print(request.args)
+        # Si el toke es igual al que recibimos
+        # hub.verify_token
+        # print(request.args)
         if request.args.get('hub.verify_token') == "HolaAlvarezBohl":
-            #Escribimos en el navegador
-            #hub.challenge
+            # Escribimos en el navegador
+            # hub.challenge
             print(request.args.get('hub.challenge'))
-            return request.args.get('hub.challenge') 
+            return request.args.get('hub.challenge')
         else:
             return "Error de autenticación."
-    #print(request.get_json())
-    #RECIBIMOS TODOS LOS DATOS ENVIADO VIA JSON
+    # print(request.get_json())
+    # RECIBIMOS TODOS LOS DATOS ENVIADO VIA JSON
     data = request.get_json()
     # COMPRUEBA SI EL MENSAJE EXISTE DENTRO DE LO QUE ENVIA EL SERVIDOR
     if 'messages' in data['entry'][0]['changes'][0]['value']:
         print(data)
-        #EXTRAEMOS EL NUMERO DE TELEFONO Y EL MANSAJE
+        # EXTRAEMOS EL NUMERO DE TELEFONO Y EL MANSAJE
         telefonoCliente = data['entry'][0]['changes'][0]['value']['messages'][0]['from']
-        #EXTRAEMOS EL TELEFONO DEL CLIENTE
+        # EXTRAEMOS EL TELEFONO DEL CLIENTE
         mensajes = data['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
-        #EXTRAEMOS EL ID DE WHATSAPP DEL ARRAY
+        # EXTRAEMOS EL ID DE WHATSAPP DEL ARRAY
         idWA = data['entry'][0]['changes'][0]['value']['messages'][0]['id']
-        #EXTRAEMOS EL TIEMPO DE WHATSAPP DEL ARRAY
+        # EXTRAEMOS EL TIEMPO DE WHATSAPP DEL ARRAY
         timestamp = data['entry'][0]['changes'][0]['value']['messages'][0]['timestamp']
-        #ESCRIBIMOS EL NUMERO DE TELEFONO Y EL MENSAJE EN EL ARCHIVO TEXTO
-        #SI HAY UN MENSAJE
-        #if mensajes is not None:
+        # ESCRIBIMOS EL NUMERO DE TELEFONO Y EL MENSAJE EN EL ARCHIVO TEXTO
+        # SI HAY UN MENSAJE
+        # if mensajes is not None:
         #    print({"mensajes": mensajes,"telefonoCliente": telefonoCliente,"idWA": idWA,"timestamp": timestamp})
         #    respuesta = conversacionbot(mensajes)
         #    print(respuesta)
@@ -155,30 +167,33 @@ def webhook_whatsapp():
         #    # respuesta = bot.reply("localuser", mensajes)
         #    # respuesta = respuesta.replace("\\n","\\\n")
         #    # respuesta = respuesta.replace("\\","")
-    
-            # f = open("texto.txt", "w")
-            # f.write(mensajes)
-            # f.close()
-            # return jsonify({"status": "success"}, 200)
+
+        # f = open("texto.txt", "w")
+        # f.write(mensajes)
+        # f.close()
+        # return jsonify({"status": "success"}, 200)
         #mensajes = request.args.get('messege')
         #telefonoCliente = '00000000000'
-        
+
         response = conversacionbot(mensajes)
         sendMessegeWhatsaapp(response['messeg'])
         # historial de peticiones al chatbot
         fe = Path('./text.txt')
-        if (fe.exists()) :
-            with open("text.txt","a") as filetextw:
+        if (fe.exists()):
+            with open("text.txt", "a") as filetextw:
                 fechaActual = datetime.now()
-                fechaFormat = datetime.strftime(fechaActual,'%b %d %Y %H:%M:%S')
-                historyFormat = "time: {0}|telefonoCliente: {1}|messege: {2}|response: {3}\n".format(fechaFormat,telefonoCliente, mensajes,response['messeg'])
+                fechaFormat = datetime.strftime(
+                    fechaActual, '%b %d %Y %H:%M:%S')
+                historyFormat = "time: {0}|telefonoCliente: {1}|messege: {2}|response: {3}\n".format(
+                    fechaFormat, telefonoCliente, mensajes, response['messeg'])
                 filetextw.write(historyFormat)
-                
-            with open("text.txt","r") as filetext:
+
+            with open("text.txt", "r") as filetext:
                 for line in filetext:
                     print(line)
 
     return jsonify({"status": "success"}, 200)
 
+
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug=True)
