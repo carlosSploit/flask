@@ -130,9 +130,9 @@ def webhook_whatsapp():
     #print(request.get_json())
     #RECIBIMOS TODOS LOS DATOS ENVIADO VIA JSON
     data = request.get_json()
-    print(data)
     # COMPRUEBA SI EL MENSAJE EXISTE DENTRO DE LO QUE ENVIA EL SERVIDOR
     if 'messages' in data['entry'][0]['changes'][0]['value']:
+        print(data)
         #EXTRAEMOS EL NUMERO DE TELEFONO Y EL MANSAJE
         telefonoCliente = data['entry'][0]['changes'][0]['value']['messages'][0]['from']
         #EXTRAEMOS EL TELEFONO DEL CLIENTE
