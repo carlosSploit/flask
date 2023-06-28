@@ -131,50 +131,52 @@ def webhook_whatsapp():
     #RECIBIMOS TODOS LOS DATOS ENVIADO VIA JSON
     data = request.get_json()
     print(data)
-    #EXTRAEMOS EL NUMERO DE TELEFONO Y EL MANSAJE
-    telefonoCliente = data ['entry'][0]['changes'][0]['value']['messages'][0]['from']
-    #EXTRAEMOS EL TELEFONO DEL CLIENTE
-    mensajes = data ['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
-    #EXTRAEMOS EL ID DE WHATSAPP DEL ARRAY
-    idWA = data ['entry'][0]['changes'][0]['value']['messages'][0]['id']
-    #EXTRAEMOS EL TIEMPO DE WHATSAPP DEL ARRAY
-    timestamp = data ['entry'][0]['changes'][0]['value']['messages'][0]['timestamp']
-    #ESCRIBIMOS EL NUMERO DE TELEFONO Y EL MENSAJE EN EL ARCHIVO TEXTO
-    #SI HAY UN MENSAJE
-    #if mensajes is not None:
-    #    print({"mensajes": mensajes,"telefonoCliente": telefonoCliente,"idWA": idWA,"timestamp": timestamp})
-    #    respuesta = conversacionbot(mensajes)
-    #    print(respuesta)
-    #    # bot = RiveScript()
-    #    # bot.sort_replies()
-    #    # bot.load_file('./distribuidoraab.rive')
-    #    # respuesta = bot.reply("localuser", mensajes)
-    #    # print(respuesta)
-    #    # respuesta = bot.reply("localuser", mensajes)
-    #    # respuesta = respuesta.replace("\\n","\\\n")
-    #    # respuesta = respuesta.replace("\\","")
-
-        # f = open("texto.txt", "w")
-        # f.write(mensajes)
-        # f.close()
-        # return jsonify({"status": "success"}, 200)
-    #mensajes = request.args.get('messege')
-    #telefonoCliente = '00000000000'
+    # COMPRUEBA SI EL MENSAJE EXISTE DENTRO DE LO QUE ENVIA EL SERVIDOR
+    if 'messages' in data['entry'][0]['changes'][0]['value']:
+        #EXTRAEMOS EL NUMERO DE TELEFONO Y EL MANSAJE
+        telefonoCliente = data['entry'][0]['changes'][0]['value']['messages'][0]['from']
+        #EXTRAEMOS EL TELEFONO DEL CLIENTE
+        mensajes = data['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
+        #EXTRAEMOS EL ID DE WHATSAPP DEL ARRAY
+        idWA = data['entry'][0]['changes'][0]['value']['messages'][0]['id']
+        #EXTRAEMOS EL TIEMPO DE WHATSAPP DEL ARRAY
+        timestamp = data['entry'][0]['changes'][0]['value']['messages'][0]['timestamp']
+        #ESCRIBIMOS EL NUMERO DE TELEFONO Y EL MENSAJE EN EL ARCHIVO TEXTO
+        #SI HAY UN MENSAJE
+        #if mensajes is not None:
+        #    print({"mensajes": mensajes,"telefonoCliente": telefonoCliente,"idWA": idWA,"timestamp": timestamp})
+        #    respuesta = conversacionbot(mensajes)
+        #    print(respuesta)
+        #    # bot = RiveScript()
+        #    # bot.sort_replies()
+        #    # bot.load_file('./distribuidoraab.rive')
+        #    # respuesta = bot.reply("localuser", mensajes)
+        #    # print(respuesta)
+        #    # respuesta = bot.reply("localuser", mensajes)
+        #    # respuesta = respuesta.replace("\\n","\\\n")
+        #    # respuesta = respuesta.replace("\\","")
     
-    response = conversacionbot(mensajes)
-    sendMessegeWhatsaapp(response['messeg'])
-    # historial de peticiones al chatbot
-    fe = Path('./text.txt')
-    if (fe.exists()) :
-        with open("text.txt","a") as filetextw:
-            fechaActual = datetime.now()
-            fechaFormat = datetime.strftime(fechaActual,'%b %d %Y %H:%M:%S')
-            historyFormat = "time: {0}|telefonoCliente: {1}|messege: {2}|response: {3}".format(fechaFormat,telefonoCliente, mensajes,response['messeg'])
-            filetextw.write(historyFormat)
-            
-        with open("text.txt","r") as filetext:
-            for line in filetext:
-                print(line)
+            # f = open("texto.txt", "w")
+            # f.write(mensajes)
+            # f.close()
+            # return jsonify({"status": "success"}, 200)
+        #mensajes = request.args.get('messege')
+        #telefonoCliente = '00000000000'
+        
+        response = conversacionbot(mensajes)
+        sendMessegeWhatsaapp(response['messeg'])
+        # historial de peticiones al chatbot
+        fe = Path('./text.txt')
+        if (fe.exists()) :
+            with open("text.txt","a") as filetextw:
+                fechaActual = datetime.now()
+                fechaFormat = datetime.strftime(fechaActual,'%b %d %Y %H:%M:%S')
+                historyFormat = "time: {0}|telefonoCliente: {1}|messege: {2}|response: {3}".format(fechaFormat,telefonoCliente, mensajes,response['messeg'])
+                filetextw.write(historyFormat)
+                
+            with open("text.txt","r") as filetext:
+                for line in filetext:
+                    print(line)
 
     return jsonify({"status": "success"}, 200)
 
