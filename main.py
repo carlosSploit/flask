@@ -123,6 +123,7 @@ def webhook_whatsapp():
         if request.args.get('hub.verify_token') == "HolaAlvarezBohl":
             #Escribimos en el navegador
             #hub.challenge
+            print(request.args.get('hub.challenge'))
             return request.args.get('hub.challenge') 
         else:
             return "Error de autenticación."
