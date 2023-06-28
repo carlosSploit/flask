@@ -1,86 +1,78 @@
 from flask import Flask, jsonify, request, render_template, current_app
 from unipath import Path
 from datetime import datetime
-# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''env
-import os
-from dotenv import load_dotenv
-# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''ApiWhatsaap
-import requests
-import json
-from heyoo import WhatsApp
-# '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''chatbot
-from nltk.chat.util import Chat, reflections
+import chatboot as ctt
+import apiWhatsaap as apwha
+# # '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''chatbot
+# from nltk.chat.util import Chat, reflections
 
-load_dotenv()
+# load_dotenv()
 app = Flask(__name__)
+ctt.initdatares()
 
-# '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''inicializar la ruta
-# datos para el entrenamiento del chatbot
-mis_reflexions = {}
-pares = []
-
-
-def initdatares():
-
-    global mis_reflexions
-    global pares
-
-    mis_reflexions = {
-        "ir": "fui",
-        "hola": "hey",
-        "caido": "cayo",
-        "cayo": "caido"
-    }
-
-    pares = [
-        # [
-        #    r"(.*) metodos (.*) publicar (.*)|",
-        #    ["Tenemos el metodo particular o profecional", ]
-        # ],
-        # pepito 58
-        [
-            r"Hola (.*)|Hola",
-            ["Hola, en que podemos ayudarte.....", ]
-        ]
-    ]
+# # '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''inicializar la ruta
+# # datos para el entrenamiento del chatbot
+# mis_reflexions = {}
+# pares = []
 
 
-initdatares()
+# def initdatares():
+
+#     global mis_reflexions
+#     global pares
+
+#     mis_reflexions = {
+#         "ir": "fui",
+#         "hola": "hey",
+#         "caido": "cayo",
+#         "cayo": "caido"
+#     }
+
+#     pares = [
+#         # [
+#         #    r"(.*) metodos (.*) publicar (.*)|",
+#         #    ["Tenemos el metodo particular o profecional", ]
+#         # ],
+#         # pepito 58
+#         [
+#             r"Hola (.*)|Hola",
+#             ["Hola, en que podemos ayudarte.....", ]
+#         ]
+#     ]
 
 
-def conversacionbot(messeg):
-    # print(mis_reflexions)
-    # print(pares)
-    chat = Chat(pares, mis_reflexions)
-    # chat.converse()
-    # Ingresar los datos para que de una respuesta el bot segun lo aprendido
-    respont = chat.respond(str(messeg))
-    meseg = str(respont)
-    resul = {}  # captara el mensaje en forma de json
-    rejson = ''  # captara el mensaje en forma de string o cadena
-
-    if ((meseg == 'None') or (meseg == '') or (meseg == None)):
-        resul['messeg'] = 'No entiendo lo que me estas escribiendo.'
-    else:
-        resul['messeg'] = meseg
-
-    return resul
-
-# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+# initdatares()
 
 
-@app.before_request
-def log_requests():
-    print("Debug log level")
+# def conversacionbot(messeg):
+#     # print(mis_reflexions)
+#     # print(pares)
+#     chat = Chat(pares, mis_reflexions)
+#     # chat.converse()
+#     # Ingresar los datos para que de una respuesta el bot segun lo aprendido
+#     respont = chat.respond(str(messeg))
+#     meseg = str(respont)
+#     resul = {}  # captara el mensaje en forma de json
+#     rejson = ''  # captara el mensaje en forma de string o cadena
 
+#     if ((meseg == 'None') or (meseg == '') or (meseg == None)):
+#         resul['messeg'] = 'No entiendo lo que me estas escribiendo.'
+#     else:
+#         resul['messeg'] = meseg
+
+#     return resul
+
+# # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+# @app.before_request
+# def log_requests():
+#     print("Debug log level")
 # inicializar la ruta
-
 
 @app.route("/", methods=["POST", "GET"])
 def index():
-    print(os.getenv('TOKEN'))
-    print(os.getenv('IDWHATSAPP'))
-    print('Arranque de la aplicacion')
+    # print(os.getenv('TOKEN'))
+    # print(os.getenv('IDWHATSAPP'))
+    # print('Arranque de la aplicacion')
     return jsonify({"status": "success", "messege": "Conexion satisfactoriamente."}, 200)
 
 # https://developers.facebook.com/docs/whatsapp/api/messages/text
@@ -107,20 +99,20 @@ def index():
 # Libreria Heyoo
 
 
-def sendMessegeWhatsaapp(messege):
-    # TOKEN DE ACCESO DE FACEBOOK
-    token = os.getenv('TOKEN')
-    # IDENTIFICADOR DE NÚMERO DE TELÉFONO
-    idNumeroTeléfono = os.getenv('IDWHATSAPP')
-    # TELEFONO QUE RECIBE (EL DE NOSOTROS QUE DIMOS DE ALTA)
-    telefonoEnvia = '51997585922'
-    # MENSAJE A ENVIAR
-    textoMensaje = messege
-    # '''''''''''''''''''''''''''''''''''''''''''' Enviamos el mensaje
-    # INICIALIZAMOS ENVIO DE MENSAJES
-    mensajeWa = WhatsApp(token, idNumeroTeléfono)
-    # ENVIAMOS UN MENSAJE DE TEXTO
-    mensajeWa.send_message(textoMensaje, telefonoEnvia)
+# def sendMessegeWhatsaapp(messege):
+#     # TOKEN DE ACCESO DE FACEBOOK
+#     token = os.getenv('TOKEN')
+#     # IDENTIFICADOR DE NÚMERO DE TELÉFONO
+#     idNumeroTeléfono = os.getenv('IDWHATSAPP')
+#     # TELEFONO QUE RECIBE (EL DE NOSOTROS QUE DIMOS DE ALTA)
+#     telefonoEnvia = '51997585922'
+#     # MENSAJE A ENVIAR
+#     textoMensaje = messege
+#     # '''''''''''''''''''''''''''''''''''''''''''' Enviamos el mensaje
+#     # INICIALIZAMOS ENVIO DE MENSAJES
+#     mensajeWa = WhatsApp(token, idNumeroTeléfono)
+#     # ENVIAMOS UN MENSAJE DE TEXTO
+#     mensajeWa.send_message(textoMensaje, telefonoEnvia)
 
 # cuando recibimos las peticiones en esta ruta
 
@@ -175,8 +167,8 @@ def webhook_whatsapp():
         #mensajes = request.args.get('messege')
         #telefonoCliente = '00000000000'
 
-        response = conversacionbot(mensajes)
-        sendMessegeWhatsaapp(response['messeg'])
+        response = ctt.conversacionbot(mensajes)
+        apwha.sendMessegeWhatsaapp(response['messeg'])
         # historial de peticiones al chatbot
         fe = Path('./text.txt')
         if (fe.exists()):
