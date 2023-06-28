@@ -175,4 +175,6 @@ def webhook_whatsapp():
     return jsonify({"status": "success"}, 200)
 
 if __name__ == "__main__":
-    app.run(debug = true)
+    print(os.getenv('TOKEN'))
+    print(os.getenv('IDWHATSAPP'))
+    app.run(debug = True)
