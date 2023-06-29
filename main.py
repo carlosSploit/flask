@@ -1,12 +1,10 @@
 from flask import Flask, jsonify, request, render_template, current_app
-from unipath import Path
-from datetime import datetime
 import chatboot as ctt
 import apiWhatsaap as apwha
-# # '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''chatbot
-# from nltk.chat.util import Chat, reflections
+import history as hist
+from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 app = Flask(__name__)
 ctt.initdatares()
 
@@ -170,19 +168,7 @@ def webhook_whatsapp():
         response = ctt.conversacionbot(mensajes)
         apwha.sendMessegeWhatsaapp(response['messeg'])
         # historial de peticiones al chatbot
-        fe = Path('./text.txt')
-        if (fe.exists()):
-            with open("text.txt", "a") as filetextw:
-                fechaActual = datetime.now()
-                fechaFormat = datetime.strftime(
-                    fechaActual, '%b %d %Y %H:%M:%S')
-                historyFormat = "time: {0}|telefonoCliente: {1}|messege: {2}|response: {3}\n".format(
-                    fechaFormat, telefonoCliente, mensajes, response['messeg'])
-                filetextw.write(historyFormat)
-
-            with open("text.txt", "r") as filetext:
-                for line in filetext:
-                    print(line)
+        hist.historyPeticion(telefonoCliente, mensajes, response)
 
     return jsonify({"status": "success"}, 200)
 
