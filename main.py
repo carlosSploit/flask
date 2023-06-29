@@ -4,8 +4,9 @@ import apiWhatsaap as apwha
 import history as hist
 from dotenv import load_dotenv
 
-load_dotenv()
 app = Flask(__name__)
+
+load_dotenv()
 ctt.initdatares()
 
 # # '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''inicializar la ruta
