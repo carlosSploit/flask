@@ -6,13 +6,13 @@ from heyoo import WhatsApp
 import os
 
 
-def sendMessegeWhatsaapp(messege):
+def sendMessegeWhatsaapp(messege, telefonoCliente):
     # TOKEN DE ACCESO DE FACEBOOK
     token = os.getenv('TOKEN')
     # IDENTIFICADOR DE NÚMERO DE TELÉFONO
     idNumeroTeléfono = os.getenv('IDWHATSAPP')
     # TELEFONO QUE RECIBE (EL DE NOSOTROS QUE DIMOS DE ALTA)
-    telefonoEnvia = '51997585922'
+    telefonoEnvia = telefonoCliente
     # MENSAJE A ENVIAR
     textoMensaje = messege
     # '''''''''''''''''''''''''''''''''''''''''''' Enviamos el mensaje
