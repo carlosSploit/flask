@@ -83,6 +83,9 @@ def conversacionbot(messeg):
     else:
         resul['messeg'] = meseg
     # si hay saltos de linea, los da, sino imprime talcual
-    return resul
+    if ("!" in resul):
+        return resul.replace("!", "\n")
+    else:
+        return resul
 
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
