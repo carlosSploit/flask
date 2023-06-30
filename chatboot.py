@@ -45,26 +45,27 @@ def initdatares():
     }
     # r"(.*) metodos (.*) publicar (.*)|" -> Emisor o lo que enviara el usuario
     # r"(.*) metodos (.*) publicar (.*)|" -> Emisor o lo que enviara el usuario
-    print(load_conver_data())
-    pares = [
-        # [
-        #    r"(.*) metodos (.*) publicar (.*)|",
-        #    ["Tenemos el metodo particular o profecional", ]
-        # ],
-        # pepito 58
-        [
-            "Hola (.*)|Hola",
-            ["Hola, en que podemos ayudarte.....", ]
-        ],
-        [
-            "Ayuda (.*)|Ayuda",
-            ["Que consulta tienes para nosotros: !- No se como pagar. !- No entiendo una operacion", ]
-        ],
-        [
-            "Contacto (.*)|Contacto",
-            ["Se puede contactarnos con nosotros.", ]
-        ]
-    ]
+    print()
+    pares = load_conver_data()
+    # pares = [
+    #     # [
+    #     #    r"(.*) metodos (.*) publicar (.*)|",
+    #     #    ["Tenemos el metodo particular o profecional", ]
+    #     # ],
+    #     # pepito 58
+    #     [
+    #         "Hola (.*)|Hola",
+    #         ["Hola, en que podemos ayudarte.....", ]
+    #     ],
+    #     [
+    #         "Ayuda (.*)|Ayuda",
+    #         ["Que consulta tienes para nosotros: !- No se como pagar. !- No entiendo una operacion", ]
+    #     ],
+    #     [
+    #         "Contacto (.*)|Contacto",
+    #         ["Se puede contactarnos con nosotros.", ]
+    #     ]
+    # ]
 
 
 def conversacionbot(messeg):
