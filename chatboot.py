@@ -22,8 +22,8 @@ def load_conver_data():
                     positAnalis = positAnalis + 1
                     # Ingreso del input
                     input = line[1:]
-                    itemAux = [input, []]
-                    paresAux.append(itemAux.replace("\n", ""))
+                    itemAux = [input.replace("\n", ""), []]
+                    paresAux.append(itemAux)
                 else:
                     # Ingresa los ouput.
                     ouput = line[1:]
