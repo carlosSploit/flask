@@ -45,7 +45,7 @@ def initdatares():
     }
     # r"(.*) metodos (.*) publicar (.*)|" -> Emisor o lo que enviara el usuario
     # r"(.*) metodos (.*) publicar (.*)|" -> Emisor o lo que enviara el usuario
-    print()
+    print(load_conver_data())
     pares = load_conver_data()
     # pares = [
     #     # [
@@ -83,6 +83,6 @@ def conversacionbot(messeg):
     else:
         resul['messeg'] = meseg
     # si hay saltos de linea, los da, sino imprime talcual
-    return resul.replace("!", "\n")
+    return resul
 
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
