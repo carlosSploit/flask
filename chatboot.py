@@ -20,9 +20,10 @@ def load_conver_data():
                 if (line[0] == '+'):
                     itemAux = []
                     positAnalis = positAnalis + 1
+                    # Ingreso del input
                     input = line[1:]
                     itemAux = [input, []]
-                    paresAux[positAnalis] = itemAux
+                    paresAux.append(itemAux)
                 else:
                     ouput = line[1:]
                     itemAux[1].append(ouput)
