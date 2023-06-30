@@ -1,10 +1,33 @@
 # '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''chatbot
 from nltk.chat.util import Chat, reflections
+from unipath import Path
 
 # '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''inicializar la ruta
 # datos para el entrenamiento del chatbot
 mis_reflexions = {}
 pares = []
+
+
+def load_conver_data():
+    paresAux = []
+    fe = Path('./conversation.txt')
+    if (fe.exists()):
+        with open("conversation.txt", "r") as filetext:
+            positAnalis = -1
+            itemAux = []
+            for line in filetext:
+                # recorre todas las lineas
+                if (line[0] == '+'):
+                    itemAux = []
+                    positAnalis = positAnalis + 1
+                    input = line[1:]
+                    itemAux = [input, []]
+                    paresAux[positAnalis] = itemAux
+                else:
+                    ouput = line[1:]
+                    itemAux[1].append(ouput)
+                    paresAux[positAnalis] = itemAux
+    return paresAux
 
 
 def initdatares():
@@ -20,6 +43,7 @@ def initdatares():
     }
     # r"(.*) metodos (.*) publicar (.*)|" -> Emisor o lo que enviara el usuario
     # r"(.*) metodos (.*) publicar (.*)|" -> Emisor o lo que enviara el usuario
+    print(load_conver_data())
     pares = [
         # [
         #    r"(.*) metodos (.*) publicar (.*)|",
@@ -32,7 +56,7 @@ def initdatares():
         ],
         [
             "Ayuda (.*)|Ayuda",
-            ["Que consulta tienes para nosotros: \n- No se como pagar. \n- No entiendo una operacion", ]
+            ["Que consulta tienes para nosotros: !- No se como pagar. !- No entiendo una operacion", ]
         ],
         [
             "Contacto (.*)|Contacto",
@@ -55,7 +79,7 @@ def conversacionbot(messeg):
         resul['messeg'] = 'No entiendo lo que me estas escribiendo.'
     else:
         resul['messeg'] = meseg
-
-    return resul
+    # si hay saltos de linea, los da, sino imprime talcual
+    return resul.replace("!", "\n")
 
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''

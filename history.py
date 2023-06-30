@@ -9,7 +9,7 @@ def historyPeticion(telefonoCliente, mensajes, response):
             fechaActual = datetime.now()
             fechaFormat = datetime.strftime(fechaActual, '%b %d %Y %H:%M:%S')
             historyFormat = "time: {0}|telefonoCliente: {1}|messege: {2}|response: {3}\n".format(
-                fechaFormat, telefonoCliente, mensajes, response['messeg'].replace("\n", "$"))
+                fechaFormat, telefonoCliente, mensajes, response['messeg'].replace("\n", "!"))
             filetextw.write(historyFormat)
 
         with open("text.txt", "r") as filetext:

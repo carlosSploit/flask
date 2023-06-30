@@ -1,0 +1,6 @@
++Hola (.*)|Hola"
+>Hola, en que podemos ayudarte....."
++Ayuda (.*)|Ayuda"
+>Que consulta tienes para nosotros: !- No se como pagar. !- No entiendo una operacion"
++Contacto (.*)|Contacto"
+>Se puede contactarnos con nosotros."
