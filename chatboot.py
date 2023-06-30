@@ -20,6 +20,7 @@ def initdatares():
     }
     # r"(.*) metodos (.*) publicar (.*)|" -> Emisor o lo que enviara el usuario
     # r"(.*) metodos (.*) publicar (.*)|" -> Emisor o lo que enviara el usuario
+    print(type(r"Ayuda (.*)|Ayuda"))
     pares = [
         # [
         #    r"(.*) metodos (.*) publicar (.*)|",
@@ -29,6 +30,10 @@ def initdatares():
         [
             r"Hola (.*)|Hola",
             ["Hola, en que podemos ayudarte.....", ]
+        ],
+        [
+            r"Ayuda (.*)|Ayuda",
+            ["Que consulta tienes para nosotros: \n- No se como pagar. \n- No entiendo una operacion", ]
         ]
     ]
 
