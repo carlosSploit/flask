@@ -28,11 +28,11 @@ def initdatares():
         # ],
         # pepito 58
         [
-            r"Hola (.*)|Hola",
+            "Hola (.*)|Hola",
             ["Hola, en que podemos ayudarte.....", ]
         ],
         [
-            r"Ayuda (.*)|Ayuda",
+            "Ayuda (.*)|Ayuda",
             ["Que consulta tienes para nosotros: \n- No se como pagar. \n- No entiendo una operacion", ]
         ]
     ]
