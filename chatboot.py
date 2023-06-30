@@ -23,10 +23,11 @@ def load_conver_data():
                     # Ingreso del input
                     input = line[1:]
                     itemAux = [input, []]
-                    paresAux.append(itemAux)
+                    paresAux.append(itemAux.replace("\n", ""))
                 else:
+                    # Ingresa los ouput.
                     ouput = line[1:]
-                    itemAux[1].append(ouput)
+                    itemAux[1].append(ouput.replace("\n", ""))
                     paresAux[positAnalis] = itemAux
     return paresAux
 
