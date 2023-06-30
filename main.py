@@ -167,7 +167,7 @@ def webhook_whatsapp():
         #telefonoCliente = '00000000000'
 
         response = ctt.conversacionbot(mensajes)
-        apwha.sendMessegeWhatsaapp(response['messeg'])
+        apwha.sendMessegeWhatsaapp(response['messeg'], telefonoCliente)
         # historial de peticiones al chatbot
         hist.historyPeticion(telefonoCliente, mensajes, response)
 
