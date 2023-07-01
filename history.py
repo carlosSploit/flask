@@ -22,7 +22,8 @@ def isUserHistory(telefonoCliente):
     if (fe.exists()):
         with open("text.txt", "r") as filetext:
             for line in filetext:
-                if line != "":
+                if line.index(" ") != -1:
+                    print(line)
                     auxText = line.split("|")
                     telefoneArray = auxText[1]
                     telefoneArrayData = telefoneArray.split(":")
