@@ -1,9 +1,8 @@
 +Hola (.*)|Hola
->Hola, en que podemos ayudarte.....
->Hola, me llamo snack.
+>Hola, tenemos estos comandos para poder ayudarte: !- Ayuda !- Contacto !- Telefono
 +Ayuda (.*)|Ayuda
 >Que consulta tienes para nosotros: !- No se como pagar. !- No entiendo una operacion
 +(.*) contac(.*)|contac(.*)|contacto
 >Se puede contactarnos con nosotros.
-+(.*) telefono (.*)|telefono (.*)|telefono
++(.*) telefono (.*)|telefono (.*)|telefono|(.*) telefono
 >El telefono para que se pueda contactar es 985796307
