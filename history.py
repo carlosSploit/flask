@@ -24,11 +24,11 @@ def isUserHistory(telefonoCliente):
             for line in filetext:
                 # if line.index(" ") != -1:
                 print(line)
-                auxText = line.split("|")
-                telefoneArray = auxText[1]
-                telefoneArrayData = telefoneArray.split(":")
-                telefonoUser = telefoneArrayData[1]
-                telefonoUser = telefonoUser[1:]
-                if (telefonoCliente == telefonoUser):
-                    return False
+                # auxText = line.split("|")
+                # telefoneArray = auxText[1]
+                # telefoneArrayData = telefoneArray.split(":")
+                # telefonoUser = telefoneArrayData[1]
+                # telefonoUser = telefonoUser[1:]
+                # if (telefonoCliente == telefonoUser):
+                #     return False
     return True
