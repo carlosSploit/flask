@@ -146,27 +146,12 @@ def webhook_whatsapp():
         timestamp = data['entry'][0]['changes'][0]['value']['messages'][0]['timestamp']
         # ESCRIBIMOS EL NUMERO DE TELEFONO Y EL MENSAJE EN EL ARCHIVO TEXTO
         # SI HAY UN MENSAJE
-        # if mensajes is not None:
-        #    print({"mensajes": mensajes,"telefonoCliente": telefonoCliente,"idWA": idWA,"timestamp": timestamp})
-        #    respuesta = conversacionbot(mensajes)
-        #    print(respuesta)
-        #    # bot = RiveScript()
-        #    # bot.sort_replies()
-        #    # bot.load_file('./distribuidoraab.rive')
-        #    # respuesta = bot.reply("localuser", mensajes)
-        #    # print(respuesta)
-        #    # respuesta = bot.reply("localuser", mensajes)
-        #    # respuesta = respuesta.replace("\\n","\\\n")
-        #    # respuesta = respuesta.replace("\\","")
-
-        # f = open("texto.txt", "w")
-        # f.write(mensajes)
-        # f.close()
-        # return jsonify({"status": "success"}, 200)
-        #mensajes = request.args.get('messege')
-        #telefonoCliente = '00000000000'
 
         response = ctt.conversacionbot(mensajes)
+
+        if (hist.isUserHistory(telefonoCliente)):
+            response = 'Bienvenido al chatbo, parece ser que es tu primera interaccion. Escribe ´hola´ para empezar con la interaccion.'
+
         apwha.sendMessegeWhatsaapp(response['messeg'], telefonoCliente)
         # historial de peticiones al chatbot
         hist.historyPeticion(telefonoCliente, mensajes, response)
