@@ -73,7 +73,7 @@ def conversacionbot(messeg):
     # print(pares)
     chat = Chat(pares, mis_reflexions)
     # Ingresar los datos para que de una respuesta el bot segun lo aprendido
-    respont = chat.respond(str(messeg))
+    respont = chat.respond(str(messeg).lower())
     meseg = str(respont)
     resul = {}  # captara el mensaje en forma de json
     rejson = ''  # captara el mensaje en forma de string o cadena

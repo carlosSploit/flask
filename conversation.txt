@@ -3,5 +3,5 @@
 >Hola, me llamo snack.
 +Ayuda (.*)|Ayuda
 >Que consulta tienes para nosotros: !- No se como pagar. !- No entiendo una operacion
-+Contacto (.*)|Contacto
++(.*) contac(.*)|contac(.*)|contacto
 >Se puede contactarnos con nosotros.
