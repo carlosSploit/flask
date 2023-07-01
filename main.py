@@ -150,7 +150,7 @@ def webhook_whatsapp():
         response = ctt.conversacionbot(mensajes)
 
         if (hist.isUserHistory(telefonoCliente)):
-            response = 'Bienvenido al chatbo, parece ser que es tu primera interaccion. Escribe ´hola´ para empezar con la interaccion.'
+            response['messeg'] = 'Bienvenido al chatbo, parece ser que es tu primera interaccion. Escribe ´hola´ para empezar con la interaccion.'
 
         apwha.sendMessegeWhatsaapp(response['messeg'], telefonoCliente)
         # historial de peticiones al chatbot
