@@ -1,5 +1,5 @@
 +Hola (.*)|Hola
->Hola, tenemos estos comandos para poder ayudarte: !- Ayuda !- Contacto del Asesor !- Telefono 
+>Hola buen día, tenemos estos comandos para poder ayudarte: !- Ayuda !- Contacto !- Telefono del asesor
 +Ayuda (.*)|Ayuda
 >Que consulta tienes para nosotros: !- No me aparecen los clientes. !- No entiendo una operacion
 +No aparecen (.*)|No me aparecen los datos (.*)
