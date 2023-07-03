@@ -1,12 +1,14 @@
-+Hola (.*)|Hola
->Hola buen día, tenemos estos comandos para poder ayudarte: !- Ayuda !- Contacto !- Telefono del asesor
++Hola (.*)|Hola|hola (.*)|ola
+>Hola buen día, soy agente viirtual de lo cual te voy a brindar apoyo, tenemos estos comandos para poder ayudarte: !- Ayuda !- Contacto !- Telefono del asesor !- Direccion de la empresa
 +Ayuda (.*)|Ayuda
->Que consulta tienes para nosotros: !- No me aparecen los clientes. !- No entiendo una operacion
-+No aparecen (.*)|No me aparecen los datos (.*)
->Se dirige a ajuste, almacenamiento de datos y preciona limpiar datos. 
+>Que consulta tienes para nosotros: !- Error de idioma. !- No entiendo una operacion
++(.*) idio (.*)|idio (.*)|idioma
+>Te brindamos un video sobre tu problema, que se encuentra en este link 👉🏻 url: https://alvarezbohl-my.sharepoint.com/:v:/g/personal/rafael_tirado_alvarezbohl_pe/EcYMfQJqUJRDqb9S9ojlwC4B7uZ4RkKr-y1jjW4hCWZnQQ?e=YdiDg9. 
 +No entiendo (.*)|No entiendo una operacion (.*)
->Describir la operación que quiere realizar
-+(.*) contac(.*)|contac(.*)|contacto
+>Describir la operación que quiere realizar.
++(.*) contac (.*)|contac (.*)|contacto
 >Se puede contactarnos con nosotros atravez de este emdio de comunicacion.
-+(.*) telefono (.*)|telefono (.*)|telefono|(.*) telefono
->El telefono para que se pueda contactar y brindar soporte 👉🏻 997585922
++(.*) telef (.*)|telef (.*)|telefono|(.*) cel (.*)|cel (.*)|celular
+>El telefono para que se pueda contactar y brindar soporte 👉🏻 997 585 922 - 915 215 795.
++(.*) direc (.*)|direc (.*)|direccion|(.*) Direc (.*)|Direc (.*)|Dirección
+>La dirección 👉🏻 Carretera Piura - Sullana (Frente a la Empresa Backus - Piura).
