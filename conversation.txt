@@ -1,16 +1,22 @@
 +Hola (.*)|Hola|hola (.*)|ola
->Hola buen día, soy agente viirtual de lo cual te voy a brindar apoyo, tenemos estos comandos para poder ayudarte: !1 - Ayuda !- Contacto !- Telefono del asesor !- Direccion de la empresa
+>Hola buen día, soy agente virtual de lo cual te voy a brindar apoyo, tenemos estos comandos para poder ayudarte: !1 - Ayuda !2 - Solucion de Software !3 - Infraestructura y servicio de TI !4 - Direccion de la empresa
++1 (.*)|1
+>Que consulta tienes para nosotros: !A - Error de idioma. !B - No entiendo una operacion
 +Ayuda (.*)|Ayuda
->Que consulta tienes para nosotros: !1 - Error de idioma. !- No entiendo una operacion
-+(.*) 1 (.*)|1 (.*)|1
->Te brindamos un video sobre tu problema, que se encuentra en este link 👉🏻 url: https://alvarezbohl-
+>Que consulta tienes para nosotros: !A - Error de idioma. !B - No entiendo una operacion
++A (.*)|A
+>Te brindamos un video sobre tu problema, que se encuentra en este link 👉🏻 url: https://alvarezbohl-my.sharepoint.com/:v:/g/personal/rafael_tirado_alvarezbohl_pe/EcYMfQJqUJRDqb9S9ojlwC4B7uZ4RkKr-y1jjW4hCWZnQQ?e=YdiDg9. 
 +(.*) idio (.*)|idio (.*)|idioma
 >Te brindamos un video sobre tu problema, que se encuentra en este link 👉🏻 url: https://alvarezbohl-my.sharepoint.com/:v:/g/personal/rafael_tirado_alvarezbohl_pe/EcYMfQJqUJRDqb9S9ojlwC4B7uZ4RkKr-y1jjW4hCWZnQQ?e=YdiDg9. 
++B (.*)|B
+>Describir la operación que quiere realizar o selecionar el area para el apoyo.
 +No entiendo (.*)|No entiendo una operacion (.*)
->Describir la operación que quiere realizar.
-+(.*) contac (.*)|contac (.*)|contacto
->Se puede contactarnos con nosotros atravez de este emdio de comunicacion.
-+(.*) telef (.*)|telef (.*)|telefono|(.*) cel (.*)|cel (.*)|celular
+>Describir la operación que quiere realizar o selecionar el area para el apoyo.
++2 (.*)|2
+>El telefono para que se pueda contactar y brindar soporte 👉🏻 900 538 286.
++(.*) software (.*)|soft (.*)|Software
+>El telefono para que se pueda contactar y brindar soporte 👉🏻 900 538 286.
++(.*) ti (.*)|ti (.*)|TI|(.*) Infra (.*)|infra (.*)|Infraestructura
 >El telefono para que se pueda contactar y brindar soporte 👉🏻 997 585 922 - 915 215 795.
 +(.*) direc (.*)|direc (.*)|direccion|(.*) Direc (.*)|Direc (.*)|Dirección
 >La dirección 👉🏻 Carretera Piura - Sullana (Frente a la Empresa Backus - Piura).
