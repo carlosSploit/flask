@@ -1,5 +1,5 @@
 +Hola (.*)|Hola|hola (.*)|ola
->Hola buen día, soy agente virtual de lo cual te voy a brindar apoyo, tenemos estos comandos para poder ayudarte: !1 - Ayuda !2 - Solucion de Software !3 - Infraestructura y servicio de TI !4 - Direccion de la empresa
+>Hola buen día, soy agente virtual que te brindará apoyo, tenemos estos comandos para poder ayudarte: !1 - Ayuda !2 - Solucion de Software !3 - Infraestructura y servicio de TI !4 - Direccion de la empresa
 +1 (.*)|1
 >Que consulta tienes para nosotros: !A - Error de idioma. !B - No entiendo una operacion
 +Ayuda (.*)|Ayuda
