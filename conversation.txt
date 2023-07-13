@@ -1,7 +1,5 @@
 +Hola (.*)|Hola|hola (.*)|ola
 >Hola buen día, soy agente viirtual de lo cual te voy a brindar apoyo, tenemos estos comandos para poder ayudarte: !1 - Ayuda !- Contacto !- Telefono del asesor !- Direccion de la empresa
-+1 (.*)|1
->Que consulta tienes para nosotros: !- Error de idioma. !- No entiendo una operacion
 +Ayuda (.*)|Ayuda
 >Que consulta tienes para nosotros: !1 - Error de idioma. !- No entiendo una operacion
 +(.*) 1 (.*)|1 (.*)|1
