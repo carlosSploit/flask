@@ -3,7 +3,9 @@
 +1 (.*)|1
 >Que consulta tienes para nosotros: !- Error de idioma. !- No entiendo una operacion
 +Ayuda (.*)|Ayuda
->Que consulta tienes para nosotros: !- Error de idioma. !- No entiendo una operacion
+>Que consulta tienes para nosotros: !1 - Error de idioma. !- No entiendo una operacion
++(.*) 1 (.*)|1 (.*)|1
+>Te brindamos un video sobre tu problema, que se encuentra en este link 👉🏻 url: https://alvarezbohl-
 +(.*) idio (.*)|idio (.*)|idioma
 >Te brindamos un video sobre tu problema, que se encuentra en este link 👉🏻 url: https://alvarezbohl-my.sharepoint.com/:v:/g/personal/rafael_tirado_alvarezbohl_pe/EcYMfQJqUJRDqb9S9ojlwC4B7uZ4RkKr-y1jjW4hCWZnQQ?e=YdiDg9. 
 +No entiendo (.*)|No entiendo una operacion (.*)
