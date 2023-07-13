@@ -16,6 +16,8 @@
 >El telefono para que se pueda contactar y brindar soporte 👉🏻 900 538 286.
 +(.*) software (.*)|soft (.*)|Software
 >El telefono para que se pueda contactar y brindar soporte 👉🏻 900 538 286.
++3 (.*)|3
+>El telefono para que se pueda contactar y brindar soporte 👉🏻 997 585 922 - 915 215 795.
 +(.*) ti (.*)|ti (.*)|TI|(.*) Infra (.*)|infra (.*)|Infraestructura
 >El telefono para que se pueda contactar y brindar soporte 👉🏻 997 585 922 - 915 215 795.
 +(.*) direc (.*)|direc (.*)|direccion|(.*) Direc (.*)|Direc (.*)|Dirección
