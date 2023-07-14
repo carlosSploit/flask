@@ -20,5 +20,5 @@
 >El telefono para que se pueda contactar y brindar soporte 👉🏻 997 585 922 - 915 215 795.
 +(.*) ti (.*)|ti (.*)|TI|(.*) Infra (.*)|infra (.*)|Infraestructura
 >El telefono para que se pueda contactar y brindar soporte 👉🏻 997 585 922 - 915 215 795.
-+(.*) direc (.*)|direc (.*)|direccion|(.*) Direc (.*)|Direc (.*)|Dirección
++(.*) direc (.*)|direc (.*)|direccion|(.*) Direc (.*)|Direc (.*)|Dirección 
 >La dirección 👉🏻 Carretera Piura - Sullana (Frente a la Empresa Backus - Piura).
